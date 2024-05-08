@@ -3,16 +3,42 @@ name: Deploy
 on:
   push:
     branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
 
 jobs:
   autodeploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
     steps:
-      - name: Get code
+      - name: Checkout
         uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 21
+          cache: 'npm'
       - name: install node
         run: npm ci
       - name: deploy
-        run: npm run deploy
-
-
+        run: npm run build
+      - name: Setup Pages
+        uses: actions/configure-pages@v3 
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./build
+      - name: Deploy to GP
+        id: deployment
+        uses: actions/deploy-pages@v2

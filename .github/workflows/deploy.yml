@@ -28,16 +28,17 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 21
+          cache: 'npm'
       - name: install node
         run: npm ci
       - name: deploy
         run: npm run build
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v3
       - name: Upload Artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v2
         with:
-          path: ./build 
+          path: ./build
       - name: Deploy to GP
         id: deployment
         uses: actions/deploy-pages@v2

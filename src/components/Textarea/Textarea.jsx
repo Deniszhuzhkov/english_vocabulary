@@ -1,11 +1,20 @@
+import { forwardRef } from 'react'
 import './Textarea.css'
-export default function Textarea(props) {
+
+const Textarea = forwardRef((props, ref) => {
   return (
     <>
       <label className={props.boxClass} data-flex='1'>
-        { props.title ? <p>{props.title}</p> : ''}
-        <textarea name={props.textareaName} onChange={props.onChange}></textarea>
+        { props.title && <p>{props.title}</p> }
+        <textarea
+          name={props.textareaName}
+          ref={ref}
+          onChange={props.onChange}
+        >
+        </textarea>
       </label>
     </>
   )
-}
+})
+
+export default Textarea

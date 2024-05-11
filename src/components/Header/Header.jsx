@@ -1,8 +1,10 @@
+import logo from '../../assets/vacabulary_centered.png'
+
 export default function Header() {
   return (
     <header>
-      <div>
-        <h1>English Vocabulary</h1>
+      <div className='row'>
+        <img src={logo} alt={'logo'} height={100}/>
       </div>
       <div>
         <button>Log In</button>

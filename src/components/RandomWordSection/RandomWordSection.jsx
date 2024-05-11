@@ -1,9 +1,9 @@
 import Textarea from "../Textarea/Textarea"
 import Button from "../Button/Button";
 
-export default function RandomWordSection({style}) {
+export default function RandomWordSection({className}) {
   return (
-    <div className="cell offset--cm" style={style}>
+    <div className={"cell offset--cm" + className && ` ${className}`}>
       <h2 className="row offset--cm">
         Word
       </h2>

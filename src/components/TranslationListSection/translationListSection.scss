@@ -1,0 +1,32 @@
+$borderColor: #343434;
+
+.table {
+  border: 1px solid $borderColor;
+  margin: 0;
+  padding: 12px;
+  border-collapse: collapse;
+  
+  th { 
+    border: 1px solid $borderColor;;
+  }
+
+  &__row {
+    border: 1px solid $borderColor;;
+    gap: 4px;
+    background-color: #202020;
+    &:nth-child(2n) {
+      background-color: #1a1a1a;
+    }
+  }
+
+  &__item {
+    padding: 4px 12px;
+    border: 1px solid $borderColor;;
+    font-size: 14px;
+    font-weight: 500;
+
+    &:first-child {
+      max-width: 50vw;
+    }
+  }
+}

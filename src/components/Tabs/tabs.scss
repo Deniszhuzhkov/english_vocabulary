@@ -1,0 +1,37 @@
+$tabsBorderColor: #555555;
+
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+  padding: 8px 12px 0;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+
+  &__element {
+    flex: 1 1 auto;
+    border: 1px solid $tabsBorderColor;
+    border-radius: 0;
+    border-radius: 4px 4px 0 0;
+    transition: all .3s; 
+
+    &:focus {
+      outline: none;
+    }
+
+    &.active {
+      border-bottom: transparent ;
+      background-color: #242424;
+    }
+  }
+}
+
+.tab-body {
+  padding-top: 0;
+  border: 1px solid $tabsBorderColor;
+  margin: -1px 12px 0;
+  position: relative;
+  background-color: #242424;
+  padding-bottom: 16px;
+}

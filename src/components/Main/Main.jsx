@@ -4,29 +4,23 @@ import { useState } from "react";
 import Tabs from "../Tabs/Tabs";
 import TranslationAdder from "../TranslationAdder/TranslationAdder";
 import RandomWordSection from "../RandomWordSection/RandomWordSection"
-import TranslationList from "../TranslationList/TranslationList"
+import TranslationListSection from "../TranslationListSection/TranslationListSection"
 
 export default function Main() {
   const [tab, setTab] = useState('addWord');
-  const tabBodyStyles = {
-    paddingTop: '0',
-    border: '1px solid #fff',
-    margin: '-1px 12px 0',
-    position: 'relative',
-  }
 
   return (
-    <main className="offset--cm">
+    <main className="offset--cm main">
       <Tabs active={tab}  tabChange={(current) => setTab(current)} />
 
       {tab === 'addWord' &&
-       <TranslationAdder style={tabBodyStyles} />
+       <TranslationAdder className={'tab-body'} />
       }
       { tab === 'goRandom' &&
-        <RandomWordSection style={tabBodyStyles} />
+        <RandomWordSection className={'tab-body'} />
       }
       { tab === 'showList' &&
-        <TranslationList style={tabBodyStyles} />
+        <TranslationListSection className={'tab-body'} />
       }
     </main>
   )

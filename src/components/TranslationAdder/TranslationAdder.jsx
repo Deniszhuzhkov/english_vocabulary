@@ -1,30 +1,47 @@
+import { useRef } from "react";
 import Button from "../Button/Button";
-import Textarea from "../Textarea/Textarea"
-import { useState } from "react";
+import Textarea from "../Textarea/Textarea";
 
-// const [value, setValue] = useState();
+export default function TranslationAdder({className}) {
+  const textareaUa = useRef();
+  const textareaEn = useRef();
 
+  function addVacabulary() {
+    testEmptyItem() && addVacabularyItem();
+  }
 
-function change(e) {
-  console.log(e.target.value); 
-}
+  function testEmptyItem () {
+    return textareaUa.current.value && textareaEn.current.value;
+  }
 
+  function addVacabularyItem() {
+    const vacabluraryList = localStorage.getItem('vacabluraryList');
+    const vacabluraryListObject = vacabluraryList ? JSON.parse(vacabluraryList) : [];    
+  
+    vacabluraryListObject.push(
+      {
+        en: textareaEn.current.value,
+        ua: textareaUa.current.value,
+      }
+    )
+    
+    localStorage.setItem('vacabluraryList', JSON.stringify(vacabluraryListObject))
+  }
 
-
-export default function TranslationAdder({style}) {
   return (
-    <div className="cell offset--cm" style={style}>
+    <div className={"cell offset--cm" + className && ` ${className}`}>
       <h2 className="row offset--cm">
-        Add your text or sentence
+        Add your word or sentence 
       </h2>
       <div className="row wrap">
         <Textarea
+          ref={textareaUa}
           title={'En'}
           textareaName={'En'}
-          onChange={change}
           boxClass={'cell offset--cm'}
         />
         <Textarea
+          ref={textareaEn}
           title={'Ua'}
           textareaName={'Ua'}
           boxClass={'cell offset--cm'}
@@ -32,7 +49,7 @@ export default function TranslationAdder({style}) {
       </div>
 
       <div className="row offset--cm">
-        <Button> Add text/sentence</Button>
+        <Button onClick={addVacabulary}> Add text/sentence</Button>
       </div>
     </div>
   );

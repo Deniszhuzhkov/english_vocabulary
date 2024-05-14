@@ -1,0 +1,11 @@
+textarea {
+  flex: 1 1 auto;
+  resize: none;
+  height: 20vh;
+  min-width: 198px;
+
+  &:disabled {
+    opacity: .3;
+    user-select: none;
+  }
+}

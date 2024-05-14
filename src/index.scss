@@ -1,5 +1,34 @@
 @import 'components/Main/main';
 @import 'components/Button/button';
 @import 'components/Header/header';
+@import 'components/Textarea/textarea.scss';
 @import 'components/Tabs/tabs';
 @import 'components/TranslationListSection/translationListSection';
+
+
+
+
+// @media (prefers-color-scheme: light) {
+//   :root {
+//     color: #213547;
+//     background-color: #ffffff;
+//   }
+//   a:hover {
+//     color: #747bff;
+//   }
+//   button {
+//     background-color: #f9f9f9;
+//   }
+// }
+
+
+
+@media screen and (max-width: 460px) {
+  header {
+    padding: 8px;
+  }
+  main.main {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

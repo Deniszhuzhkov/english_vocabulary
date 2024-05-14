@@ -1,5 +1,4 @@
 import { forwardRef } from 'react'
-import './Textarea.css'
 
 const Textarea = forwardRef((props, ref) => {
   return (

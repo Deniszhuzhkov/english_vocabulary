@@ -9,7 +9,10 @@ const Textarea = forwardRef((props, ref) => {
         <textarea
           name={props.textareaName}
           ref={ref}
+          disabled={props.disabled}
+          value={props.value}
           onChange={props.onChange}
+          lang='uk'
         >
         </textarea>
       </label>

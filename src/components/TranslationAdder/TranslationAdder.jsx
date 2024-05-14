@@ -3,8 +3,10 @@ import Button from "../Button/Button";
 import Textarea from "../Textarea/Textarea";
 
 export default function TranslationAdder({className}) {
+  
   const textareaUa = useRef();
   const textareaEn = useRef();
+
 
   function addVacabulary() {
     testEmptyItem() && addVacabularyItem();
@@ -15,17 +17,22 @@ export default function TranslationAdder({className}) {
   }
 
   function addVacabularyItem() {
-    const vacabluraryList = localStorage.getItem('vacabluraryList');
-    const vacabluraryListObject = vacabluraryList ? JSON.parse(vacabluraryList) : [];    
+    const vacabularyList = localStorage.getItem('vacabularyList');
+    const vacabularyListObject = vacabularyList ? JSON.parse(vacabularyList) : [];    
   
-    vacabluraryListObject.push(
+    vacabularyListObject.push(
       {
+        id: vacabularyListObject.length,
         en: textareaEn.current.value,
         ua: textareaUa.current.value,
       }
     )
     
-    localStorage.setItem('vacabluraryList', JSON.stringify(vacabluraryListObject))
+    localStorage.setItem('vacabularyList', JSON.stringify(vacabularyListObject))
+    
+    textareaUa.current.value = '';
+    textareaEn.current.value = '';
+   
   }
 
   return (
@@ -35,13 +42,15 @@ export default function TranslationAdder({className}) {
       </h2>
       <div className="row wrap">
         <Textarea
-          ref={textareaUa}
+          ref={textareaEn}
+          
           title={'En'}
           textareaName={'En'}
           boxClass={'cell offset--cm'}
         />
         <Textarea
-          ref={textareaEn}
+          ref={textareaUa}
+          
           title={'Ua'}
           textareaName={'Ua'}
           boxClass={'cell offset--cm'}
@@ -49,7 +58,7 @@ export default function TranslationAdder({className}) {
       </div>
 
       <div className="row offset--cm">
-        <Button onClick={addVacabulary}> Add text/sentence</Button>
+        <Button onClick={addVacabulary}> Add word/sentence</Button>
       </div>
     </div>
   );

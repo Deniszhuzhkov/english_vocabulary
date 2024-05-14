@@ -14,8 +14,15 @@ $borderColor: #343434;
     border: 1px solid $borderColor;;
     gap: 4px;
     background-color: #202020;
+    transition: background-color .2s;
+    cursor: pointer;
+    
     &:nth-child(2n) {
       background-color: #1a1a1a;
+    }
+
+    &:hover {
+      background-color: #535353;
     }
   }
 
@@ -27,6 +34,20 @@ $borderColor: #343434;
 
     &:first-child {
       max-width: 50vw;
+    }
+
+    &--btn {
+      max-width: 50px;
+      width: 50px;
+    }
+  }
+
+  &__action {
+    padding: 4px 8px;
+    border-radius: 2px;
+
+    &--red {
+      background-color: #922530;
     }
   }
 }

@@ -83,6 +83,10 @@ a {
     justify-content: center;
   }
 
+  &--between {
+    justify-content: space-between;
+  }
+
   &--v-start {
     align-items: flex-end;
   }
@@ -106,6 +110,12 @@ a {
 
 .offset--cm {
   padding: 12px;
+
+
+  &--w {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
 }
 
 

@@ -56,10 +56,10 @@ export default function TranslationListSection({ className }) {
                   {list.map(el => (
                     <TranslationListItem
                       key={el.id}
-                      onClickSet=   {() => {deleteItem(el.id)}}
-                      onBlur = { () => {saveChange()} }
-                      onChange = { element => {onChange(element, el.id)} }
-                      value = { el }
+                      onClickSet={() => {deleteItem(el.id)}}
+                      onBlur={() => {saveChange()}}
+                      onChange={element => {onChange(element, el.id)}}
+                      value={el}
                       {...el}
                     />
                   ))}

@@ -9,7 +9,6 @@ export default function TranslationListItem(props) {
     runFnProps && runFnProps()
   };
 
-  
   return (
     <tr onClick={props.onClick} className="table__row">
       <td

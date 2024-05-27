@@ -3,17 +3,28 @@ import { useState } from "react";
 import TranslationListItem from "../TranslationListItem/TranslationListItem";
 import Settings from "../../assets/Settings.svg"
 
-export default function TranslationListSection({ className }) {
 
+export default function TranslationListSection({ className }) {
 
   const [vacabularyList, setVacabularyList] = useState(JSON.parse(localStorage.getItem('vacabularyList')));
 
-  function allowEditable(el) {
-    el.target.contentEditable = true;
+  function onChange(el, id) {
+
+    let updatedList = vacabularyList.map((element) => {
+      if (id === element.id) {
+        element[el.target.name] = el.target.value 
+        return element
+      } else {
+        return element
+      }
+    })
+    setVacabularyList(updatedList)
   }
-  function removeEditable(el) {
-    el.target.contentEditable = false;
+
+  function saveChange() {
+    localStorage.setItem('vacabularyList', JSON.stringify(vacabularyList))
   }
+  
 
   function deleteItem(id) {
     const updateVacabularyList = vacabularyList.filter((el) => (el.id !== id));
@@ -37,7 +48,7 @@ export default function TranslationListSection({ className }) {
                   <tr>
                     <th>En</th>
                     <th>Ua</th>
-                    <th className="table__itrem--btn">
+                    <th className="table__item--btn">
                       <img src={Settings} alt={'settings'} />
                     </th>
                   </tr>
@@ -46,9 +57,10 @@ export default function TranslationListSection({ className }) {
                   {vacabularyList.map(el => (
                     <TranslationListItem
                       key={el.id}
-                      onBlur={removeEditable}
-                      onClick={allowEditable}
-                      onClickSet={(id) => deleteItem(el.id)}
+                      onClickSet={() => {deleteItem(el.id)}}
+                      onBlur = { () => {saveChange()} }
+                      onChange={element => onChange(element, el.id)}
+                      value={el}
                       {...el}
                     />
                   ))}
@@ -56,7 +68,6 @@ export default function TranslationListSection({ className }) {
               </table>
             : <p>Empty list</p>
           }
-
         </div>
       </div>
     </div>

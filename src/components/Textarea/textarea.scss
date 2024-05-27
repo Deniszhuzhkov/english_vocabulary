@@ -3,6 +3,7 @@ textarea {
   resize: none;
   height: 20vh;
   min-width: 198px;
+  font-size: var(--input-size);
 
   &:disabled {
     opacity: .3;

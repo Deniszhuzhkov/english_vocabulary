@@ -18,17 +18,17 @@ export default function TranslationAdder({className}) {
 
   function addVacabularyItem() {
     const vacabularyList = localStorage.getItem('vacabularyList');
-    const vacabularyListObject = vacabularyList ? JSON.parse(vacabularyList) : [];    
+    const vacabularyListArr = vacabularyList ? JSON.parse(vacabularyList) : [];    
   
-    vacabularyListObject.push(
+    vacabularyListArr.push(
       {
-        id: vacabularyListObject.length,
+        id: vacabularyListArr[vacabularyListArr.length - 1]?.id + 1 || 0,
         en: textareaEn.current.value,
         ua: textareaUa.current.value,
       }
     )
     
-    localStorage.setItem('vacabularyList', JSON.stringify(vacabularyListObject))
+    localStorage.setItem('vacabularyList', JSON.stringify(vacabularyListArr))
     
     textareaUa.current.value = '';
     textareaEn.current.value = '';

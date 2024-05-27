@@ -6,9 +6,9 @@ export default function Header() {
       <div className='row'>
         <img src={logo} alt={'logo'} height={100}/>
       </div>
-      <div>
+      {/* <div>
         <button>Log In</button>
-      </div>
+      </div> */}
     </header>
   )
 }

@@ -7,7 +7,7 @@ import RandomWordSection from "../RandomWordSection/RandomWordSection"
 import TranslationListSection from "../TranslationListSection/TranslationListSection"
 
 export default function Main() {
-  const [tab, setTab] = useState('addWord');
+  const [tab, setTab] = useState(localStorage.length ? 'showList' : 'addWord');
 
   return (
     <main className="offset--cm main">

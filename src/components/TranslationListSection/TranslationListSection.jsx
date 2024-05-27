@@ -1,16 +1,15 @@
 import { useState } from "react";
 
 import TranslationListItem from "../TranslationListItem/TranslationListItem";
+import Button from "../Button/Button"
 import Settings from "../../assets/Settings.svg"
-
 
 export default function TranslationListSection({ className }) {
 
-  const [vacabularyList, setVacabularyList] = useState(JSON.parse(localStorage.getItem('vacabularyList')));
+  const [list, setList] = useState(JSON.parse(localStorage.getItem('vacabularyList')));
 
   function onChange(el, id) {
-
-    let updatedList = vacabularyList.map((element) => {
+    let updatedList = list.map((element) => {
       if (id === element.id) {
         element[el.target.name] = el.target.value 
         return element
@@ -18,18 +17,17 @@ export default function TranslationListSection({ className }) {
         return element
       }
     })
-    setVacabularyList(updatedList)
+    setList(updatedList)
   }
 
   function saveChange() {
-    localStorage.setItem('vacabularyList', JSON.stringify(vacabularyList))
+    localStorage.setItem('vacabularyList', JSON.stringify(list))
   }
   
-
   function deleteItem(id) {
-    const updateVacabularyList = vacabularyList.filter((el) => (el.id !== id));
-    setVacabularyList(updateVacabularyList);
-    localStorage.setItem('vacabularyList', JSON.stringify(updateVacabularyList))
+    const filteredList = list.filter((el) => (el.id !== id));
+    setList(filteredList);
+    localStorage.setItem('vacabularyList', JSON.stringify(filteredList))
   }
 
   return (
@@ -42,7 +40,8 @@ export default function TranslationListSection({ className }) {
 
       <div className="cell wrap">
         <div className="offset--cm cell">
-          { vacabularyList ?
+          { list ?
+            <div className="cell">
               <table className="table">
                 <thead>
                   <tr>
@@ -54,18 +53,20 @@ export default function TranslationListSection({ className }) {
                   </tr>
                 </thead>
                 <tbody> 
-                  {vacabularyList.map(el => (
+                  {list.map(el => (
                     <TranslationListItem
                       key={el.id}
-                      onClickSet={() => {deleteItem(el.id)}}
+                      onClickSet=   {() => {deleteItem(el.id)}}
                       onBlur = { () => {saveChange()} }
-                      onChange={element => onChange(element, el.id)}
-                      value={el}
+                      onChange = { element => {onChange(element, el.id)} }
+                      value = { el }
                       {...el}
                     />
                   ))}
                 </tbody>
               </table>
+              <Button className={'action action--hover-show'}>+</Button>
+            </div>
             : <p>Empty list</p>
           }
         </div>

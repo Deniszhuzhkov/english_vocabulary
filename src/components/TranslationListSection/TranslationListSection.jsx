@@ -7,7 +7,7 @@ import Settings from "../../assets/Settings.svg"
 export default function TranslationListSection({ className }) {
   const [list, setList] = useState(JSON.parse(localStorage.getItem('vacabularyList')));
   const [itemAdder, setItemAdder] = useState(false);
-  const lastId = list[list.length - 1].id + 1;
+  const lastId = list[list.length - 1]?.id + 1;
 
   function onChange(el, id) {
     const updatedList = list.map((element) => {

@@ -4,7 +4,7 @@ export default function Tabs({active ,tabChange}) {
   return (
     <div className="tabs">
         <Button className={'tabs__element ' + (active === 'addWord' ? 'active' : '')} onClick={() => tabChange('addWord')}>
-          Add Word/Letter
+          Add Word/Sentence
         </Button>
         <Button className={'tabs__element ' + (active === 'goRandom' ? 'active' : '') } onClick={() => tabChange('goRandom')}>
           Go Random

@@ -9,8 +9,42 @@
 @import 'components/Tabs/tabs';
 @import 'components/TranslationListSection/translationListSection';
 
+.bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  
+  
+  overflow: hidden;
+  z-index: -1;
+  
+
+  &::before  {
+    content: '';
+    display: block;
+    position: absolute;
+    transform: scale(2) scaleY(1.5);
+    background: rgb(149,0,235);
+    background: linear-gradient(225deg, rgb(68 50 79 / 19%) 0%, rgb(21 19 22 / 38%) 100%);
+    width: 100%;
+    height: 100%; 
+  }
+}
+
+.input {
+  flex: 1 1 auto
+}
 
 
+.text-translate {
+  font-size: 20px;
+  
+  margin: 12px;
+  padding-bottom: 4px;
+  padding-top: 4px;
+  font-weight: 300;
+  background-color: #42414a;
+}
 
 // @media (prefers-color-scheme: light) {
 //   :root {

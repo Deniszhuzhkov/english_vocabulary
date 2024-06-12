@@ -5,11 +5,12 @@ import Button from "../Button/Button"
 import Settings from "../../assets/Settings.svg"
 
 export default function TranslationListSection({ className }) {
-
   const [list, setList] = useState(JSON.parse(localStorage.getItem('vacabularyList')));
+  const [itemAdder, setItemAdder] = useState(false);
+  const lastId = list[list.length - 1].id + 1;
 
   function onChange(el, id) {
-    let updatedList = list.map((element) => {
+    const updatedList = list.map((element) => {
       if (id === element.id) {
         element[el.target.name] = el.target.value 
         return element
@@ -63,9 +64,22 @@ export default function TranslationListSection({ className }) {
                       {...el}
                     />
                   ))}
+
+                  {itemAdder && 
+                    <TranslationListItem
+                      key={lastId}
+                      add={true}
+                      onChange={element => {onChange(element, lastId)}}
+                      onClickSet={() => {setItemAdder(false);}}
+                      value={{id: lastId, en: '', ua: ""}}
+          
+                    />
+                  }
                 </tbody>
               </table>
-              <Button className={'action action--hover-show'}>+</Button>
+              {!itemAdder && 
+                <Button className={'action action--hover-show'} onClick={() => {setItemAdder(true)}}>+</Button>
+              }
             </div>
             : <p>Empty list</p>
           }

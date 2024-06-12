@@ -10,6 +10,7 @@ const Textarea = forwardRef((props, ref) => {
           ref={ref}
           disabled={props.disabled}
           value={props.value}
+          className={props.className}
           onChange={props.onChange}
           lang='uk'
         >

@@ -3,7 +3,10 @@ import { useState } from "react";
 import Button from "../Button/Button";
 
 export default function RandomWordSection({ className }) {
-  let list = JSON.parse(localStorage.getItem('vacabularyList'));
+  let list = JSON.parse(localStorage.getItem('vocabularyList')) || {};
+  
+
+
   const [randomNum, setRandomNum] = useState(getRandom(list.length))
   const [ansver, setAnsver] = useState()
   const [history, setHistory] = useState([]);

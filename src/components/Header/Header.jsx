@@ -1,4 +1,4 @@
-import logo from '../../assets/vacabulary_centered.png'
+import logo from '../../assets/vocabulary_centered.png'
 
 export default function Header() {
   return (

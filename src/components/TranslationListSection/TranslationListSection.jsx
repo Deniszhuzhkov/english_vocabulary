@@ -5,9 +5,10 @@ import Button from "../Button/Button"
 import Settings from "../../assets/Settings.svg"
 
 export default function TranslationListSection({ className }) {
-  const [list, setList] = useState(JSON.parse(localStorage.getItem('vacabularyList')));
+  const [list, setList] = useState(JSON.parse(localStorage.getItem('vocabularyList')));
   const [itemAdder, setItemAdder] = useState(false);
-  const lastId = list[list.length - 1]?.id + 1;
+
+  const lastId = list && list[list.length - 1]?.id + 1;
 
   function onChange(el, id) {
     const updatedList = list.map((element) => {
@@ -22,13 +23,13 @@ export default function TranslationListSection({ className }) {
   }
 
   function saveChange() {
-    localStorage.setItem('vacabularyList', JSON.stringify(list))
+    localStorage.setItem('vocabularyList', JSON.stringify(list))
   }
   
   function deleteItem(id) {
     const filteredList = list.filter((el) => (el.id !== id));
     setList(filteredList);
-    localStorage.setItem('vacabularyList', JSON.stringify(filteredList))
+    localStorage.setItem('vocabularyList', JSON.stringify(filteredList))
   }
 
   return (
@@ -41,7 +42,7 @@ export default function TranslationListSection({ className }) {
 
       <div className="cell wrap">
         <div className="offset--cm cell">
-          { list ?
+          { list && list.length ?
             <div className="cell">
               <table className="table">
                 <thead>

@@ -8,27 +8,27 @@ export default function TranslationAdder({className}) {
   const textareaEn = useRef();
 
 
-  function addVacabulary() {
-    testEmptyItem() && addVacabularyItem();
+  function addVocabulary() {
+    testEmptyItem() && addVocabularyItem();
   }
 
   function testEmptyItem () {
     return textareaUa.current.value && textareaEn.current.value;
   }
 
-  function addVacabularyItem() {
-    const vacabularyList = localStorage.getItem('vacabularyList');
-    const vacabularyListArr = vacabularyList ? JSON.parse(vacabularyList) : [];    
+  function addVocabularyItem() {
+    const vocabularyList = localStorage.getItem('vocabularyList');
+    const vocabularyListArr = vocabularyList ? JSON.parse(vocabularyList) : [];    
   
-    vacabularyListArr.push(
+    vocabularyListArr.push(
       {
-        id: vacabularyListArr[vacabularyListArr.length - 1]?.id + 1 || 0,
+        id: vocabularyListArr[vocabularyListArr.length - 1]?.id + 1 || 0,
         en: textareaEn.current.value,
         ua: textareaUa.current.value,
       }
     )
     
-    localStorage.setItem('vacabularyList', JSON.stringify(vacabularyListArr))
+    localStorage.setItem('vocabularyList', JSON.stringify(vocabularyListArr))
     
     textareaUa.current.value = '';
     textareaEn.current.value = '';
@@ -58,7 +58,7 @@ export default function TranslationAdder({className}) {
       </div>
 
       <div className="row offset--cm">
-        <Button onClick={addVacabulary}> Add word/sentence</Button>
+        <Button onClick={addVocabulary}> Add word/sentence</Button>
       </div>
     </div>
   );

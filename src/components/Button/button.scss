@@ -39,8 +39,19 @@ button {
     background-color: transparent;
   }
 
+  &--h--full {
+    flex: 1 1 auto;
+    padding: 0;
+    padding: 8px;
+    border-radius: 0;
+    border-color: #717171;
+    border-left: 0;
+  }
+
   &:not(.active):hover {
     opacity: 1;
     border-color: #4e4e4e;
   }
+
+
 }

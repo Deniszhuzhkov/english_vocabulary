@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function TranslationListItem(props) {
-  let [inputEn, setInputEn] = useState(false);
+  let [inputEn, setInputEn] = useState(props.activeTabe || false);
   let [inputUa, setInputUa] = useState(false);
 
   function onBlur(setInputFn, runFnProps) {
@@ -23,6 +23,7 @@ export default function TranslationListItem(props) {
               onBlur={() => {onBlur(setInputEn, props.onBlur)}}
               onChange={props.onChange}
               value={props.en}
+
               name="en"
             ></input>
           :
@@ -38,7 +39,7 @@ export default function TranslationListItem(props) {
               className="table__input"
               onChange={props.onChange}
               autoFocus={true}
-              onBlur={() => {onBlur(setInputUa, props.onBlur)}}
+              onBlur={() => {onBlur(setInputUa, props.onBlur())}}
               value={props.ua}
               name="ua"
             ></input>
@@ -46,8 +47,12 @@ export default function TranslationListItem(props) {
             <p className="table__text" >{ props.ua }</p>
         }
       </td>
+      
       <td className="table__item table__item--btn">
-        <button className="table__action table__action--red" onClick={props.onClickSet}>X</button>
+        { 
+        !props.activeTabe &&
+          <button className="table__action table__action--red" onClick={props.onClickSet}>X</button>
+        }
       </td>
     </tr>
   )

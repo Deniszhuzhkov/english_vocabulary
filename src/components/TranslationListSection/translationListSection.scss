@@ -46,6 +46,8 @@ $borderColor: #343434;
       max-width: 50px;
       width: 50px;
       padding: 2px 12px;
+      background-color: #2b2b2b;    
+      border-color: transparent !important;
     }
   }
 
@@ -63,7 +65,12 @@ $borderColor: #343434;
     border-radius: 2px;
 
     &--red {
-      background-color: #922530;
+      background-color: transparent;
+
+      &:not(.active):hover {
+        background-color: #922530;
+        border-color: #fff;
+      }
     }
   }
 }

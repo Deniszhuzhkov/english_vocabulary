@@ -10,17 +10,12 @@ export default function TranslationListSection({ className }) {
 
   function onChange(el, id) {
     const updatedList = list.map((element) => {
-      if (id === element.id) {
-        element[el.target.name] = el.target.value 
-        return element
-      } else {
-        return element
-      }
+      id === element.id && (element[el.target.name] = el.target.value)
+      return element
     })
     setList(updatedList)
   }
   
-
   function changeNewItem(el) {
     let updatedItem = {
       id: newItem.id,
@@ -39,12 +34,8 @@ export default function TranslationListSection({ className }) {
         newItem
       ]);
       saveChange()
-      setNewItem(null)
-
     }
-    
-   
-    
+    setNewItem(null)
   }
 
   function addItem() {

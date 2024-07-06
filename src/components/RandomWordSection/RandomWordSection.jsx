@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "../Button/Button";
+import ChangeIcon from '../../assets/change.svg'
 
 export default function RandomWordSection({ className }) {
   const list = JSON.parse(localStorage.getItem('vocabularyList')) || {};
@@ -49,7 +50,7 @@ export default function RandomWordSection({ className }) {
           <div className="row">
             <div className="cell">
               <Button onClick={()=>setEnToUa(!enToUa)} className={'action--h--full'}>
-                R
+                <img src={ChangeIcon} alt="" />
               </Button>
             </div>
             <div data-flex='1' className="cell">

@@ -1,28 +1,40 @@
 import { useState } from "react";
 import Button from "../Button/Button";
 
-
 export default function RandomWordSection({ className }) {
   const list = JSON.parse(localStorage.getItem('vocabularyList')) || {};
-  const [enToUa, setEnToUa] = useState(true)
-  const [randomNum, setRandomNum] = useState(getRandom(list.length))
-  const [ansver, setAnsver] = useState()
+  const [enToUa, setEnToUa] = useState(true);
+  const [randomNum, setRandomNum] = useState(getRandom(list.length));
+  const [answer, setanswer] = useState('');
   const [history, setHistory] = useState([]);
 
   function getRandom(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
 
-  function sendAnsver() {
+  function getColor(word = '', answer = '') {
+    let q = 0;
+    answer.split('').forEach((el, index) => {
+      word[index] === el && ++q;
+    });
+    let coo = q / answer.length;
+    
+    if(coo > .9) { return 'exelent';}
+    if(coo > .5) { return 'good';}
+    if(coo > .3) { return 'notGood';}
+    return 'bad'
+  }
+
+  function sendanswer() {
     let timeRandomNum;
     do {
       timeRandomNum = getRandom(list.length);
     } while (timeRandomNum === randomNum && list.length > 1)
     setHistory([
-      { ua: list[randomNum][enToUa ? 'en' : 'ua'], ansver: ansver },
+      { ua: list[randomNum][enToUa ? 'en' : 'ua'], answer: answer, corect: getColor(list[randomNum][enToUa ? 'en' : 'ua'], answer)  },
       ...history,
     ])
-    setAnsver('');
+    setanswer('');
     setRandomNum(timeRandomNum);
   }
 
@@ -53,9 +65,9 @@ export default function RandomWordSection({ className }) {
                 <p><b>{enToUa ? 'En' : 'Ua'}</b></p>
                 <div className="cell offset--cm--left" data-flex='1'>
                   <input
-                    onKeyDown={e => { e.code == "Enter" && sendAnsver() }}
-                    onChange={el => { setAnsver(el.target.value) }}
-                    value={ansver}
+                    onKeyDown={e => { e.code == "Enter" && sendanswer() }}
+                    onChange={el => { setanswer(el.target.value) }}
+                    value={answer}
                     className="input" type="text" />
                 </div>
               </div>
@@ -63,15 +75,15 @@ export default function RandomWordSection({ className }) {
           </div>
 
           <div className="row offset--cm">
-            <Button onClick={sendAnsver}> Send Ansver</Button>
+            <Button onClick={sendanswer}> Send answer</Button>
           </div>
           {
             history &&
-            history.map(el => (
-              <div className="row row--v-center">
+            history.map((el, index) => (
+              <div  key={index} className={`row row--v-center text text--status-${el.corect}`}>
                 <div className="offset--cm">{el.ua}</div>
                 <div>-</div>
-                <div className="offset--cm">{el.ansver}</div>
+                <div className="offset--cm">{el.answer}</div>
               </div>
             ))
           }

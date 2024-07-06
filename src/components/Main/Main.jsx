@@ -10,18 +10,19 @@ export default function Main() {
   const [tab, setTab] = useState(localStorage.length ? 'showList' : 'addWord');
 
   return (
-    <main className="offset--cm main">
-      <Tabs active={tab}  tabChange={(current) => setTab(current)} />
+    <>
+      <Tabs active={tab} tabChange={(current) => setTab(current)} />
 
       {tab === 'addWord' &&
-       <TranslationAdder className={'tab-body'} />
+        <TranslationAdder className={'tab-body'} />
       }
-      { tab === 'goRandom' &&
+      {tab === 'goRandom' &&
         <RandomWordSection className={'tab-body'} />
       }
-      { tab === 'showList' &&
+      {tab === 'showList' &&
         <TranslationListSection className={'tab-body'} />
       }
-    </main>
+    </>
+
   )
 }

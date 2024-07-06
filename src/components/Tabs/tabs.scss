@@ -25,9 +25,10 @@ $tabsBorderColor: #555555;
     &:not(.active) {
       opacity: .5;
 
-      &:hover,
+      &:hover,  
       &:focus {
         opacity: 1;
+        border-color: #9580EC;
       }
     }
 

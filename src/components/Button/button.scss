@@ -48,10 +48,12 @@ button {
     border-left: 0;
   }
 
-  &:not(.active):hover {
-    opacity: 1;
-    border-color: #4e4e4e;
+  &:not(.active) {
+    &:hover,
+    &:focus {
+      opacity: 1;
+      border-color: #4e4e4e;
+    }
   }
-
 
 }

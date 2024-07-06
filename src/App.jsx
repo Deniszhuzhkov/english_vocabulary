@@ -5,9 +5,11 @@ import Main from './components/Main/Main'
 function App() {
   return (
     <>
-      
       <Header />
-      <Main />
+      <main className="offset--cm main">
+        <Main />
+      </main>
+      
     </>
   )
 }

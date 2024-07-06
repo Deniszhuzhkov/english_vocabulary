@@ -127,3 +127,25 @@ a {
   }
 }
 
+.text {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+
+  &--status {
+    &-exelent {
+     color: #07e100;
+    }
+
+    &-good  {
+      color: #e3cb02;
+    }
+
+    &-notGood {
+      color: orange;
+    }
+
+    &-bad {
+      color: #cc3b0f;
+    }
+  }
+}

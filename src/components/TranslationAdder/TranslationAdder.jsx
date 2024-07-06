@@ -43,14 +43,12 @@ export default function TranslationAdder({className}) {
       <div className="row wrap">
         <Textarea
           ref={textareaEn}
-          
           title={'En'}
           textareaName={'En'}
           boxClass={'cell offset--cm'}
         />
         <Textarea
           ref={textareaUa}
-          
           title={'Ua'}
           textareaName={'Ua'}
           boxClass={'cell offset--cm'}

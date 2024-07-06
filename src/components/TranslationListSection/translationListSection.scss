@@ -74,3 +74,43 @@ $borderColor: #343434;
     }
   }
 }
+
+.upload {
+  display: flex;
+  position: relative;
+  padding: 4px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+
+  &:hover,
+  &:focus,
+  &:focus-within {
+    color: #9580ec;
+  }
+
+  &__input {
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    margin: -1px;
+    position: absolute;
+    opacity: 0;
+  }
+
+  &__text {
+    font-size: 14px;
+  }
+}
+
+.download {
+  color: #fff;
+  padding: 4px;
+  border: 1px solid #ddd;
+  border-radius: 0;
+
+  &:hover,
+  &:focus,
+  &:focus-within {
+    color: #9580ec;
+  }
+}

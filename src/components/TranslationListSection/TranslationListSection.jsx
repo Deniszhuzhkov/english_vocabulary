@@ -104,46 +104,48 @@ export default function TranslationListSection({ className }) {
       </div>
       <div className="cell wrap">
         <div className="offset--cm cell">
-          { list && list.length ?
-            <div className="cell">
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th>En</th>
-                    <th>Ua</th>
-                    <th className="table__item--btn">
-                      <img src={Settings} alt={'settings'} />
-                    </th>
-                  </tr>
-                </thead>
-                <tbody> 
-                  {list.map(el => (
-                    <TranslationListItem
-                      key={el.id}
-                      onChange={element => {onChange(element, el.id)}}
-                      onBlur={() => {saveChange()}}
-                      onClickSet={() => {deleteItem(el.id)}}
-                      value={el}
-                      {...el}
-                    />
-                  ))}
-                  {newItem && 
-                    <TranslationListItem
-                      activeTabe={true}
-                      onChange={element => {changeNewItem(element)}}
-                      onBlur={() => {saveNewItem()}}
-                      value={newItem}
-                      {...newItem}
-                    />
-                  }
-                </tbody>
-              </table>
-              {!newItem && 
-                <Button className={'action action--hover-show'} onClick={() => {addItem()}}>+</Button>
-              }
-            </div>
-            : <p>Empty list</p>
+          <div className="cell">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>En</th>
+                  <th>Ua</th>
+                  <th className="table__item--btn">
+                    <img src={Settings} alt={'settings'} />
+                  </th>
+                </tr>
+              </thead>
+              <tbody> 
+                {list.map(el => (
+                  <TranslationListItem
+                    key={el.id}
+                    onChange={element => {onChange(element, el.id)}}
+                    onBlur={() => {saveChange()}}
+                    onClickSet={() => {deleteItem(el.id)}}
+                    value={el}
+                    {...el}
+                  />
+                ))}
+                {newItem && 
+                  <TranslationListItem
+                    activeTabe={true}
+                    onChange={element => {changeNewItem(element)}}
+                    onBlur={() => {saveNewItem()}}
+                    value={newItem}
+                    {...newItem}
+                  />
+                }
+              </tbody>
+            </table>
+            {!newItem  && 
+              <Button className={`action action--hover-show ${!(list && list.length) && 'is-active'}`} onClick={() => {addItem()}}>+</Button>
+            }
+          </div>
+          {
+            !(list && list.length) &&
+              <p className="offset--cm"> Empty List</p>
           }
+          
         </div>
       </div>
     </div>

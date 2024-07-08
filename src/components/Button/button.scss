@@ -37,6 +37,11 @@ button {
     border-color: #343434;
     transition: opacity .4s;
     background-color: transparent;
+
+    &.is-active {
+      opacity: 1;
+      border-color: #4e4e4e;
+    }
   }
 
   &--h--full {

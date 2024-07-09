@@ -10,7 +10,7 @@ export default function TranslationListSection({ className }) {
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
-    
+
     if (selectedFile) {
       const reader = new FileReader();
       reader.onload = (event) => {
@@ -21,7 +21,7 @@ export default function TranslationListSection({ className }) {
             ...list,
             ...jsonData.map(el => (el.id = ++lastId, el))
           ]);
-          
+
         } catch (error) {
           console.log(error);
         }
@@ -37,7 +37,7 @@ export default function TranslationListSection({ className }) {
     })
     setList(updatedList)
   }
-  
+
   function changeNewItem(el) {
     let updatedItem = {
       id: newItem.id,
@@ -49,7 +49,7 @@ export default function TranslationListSection({ className }) {
   }
 
   function saveNewItem() {
-    
+
     if (newItem.en) {
       setList([
         ...list,
@@ -61,13 +61,13 @@ export default function TranslationListSection({ className }) {
   }
 
   function addItem() {
-    setNewItem({'id': list && list[list.length - 1]?.id + 1 || 1, en: '', ua: ""})
+    setNewItem({ 'id': list && list[list.length - 1]?.id + 1 || 1, en: '', ua: "" })
   }
 
   function saveChange() {
     localStorage.setItem('vocabularyList', JSON.stringify(list))
   }
-  
+
   function deleteItem(id) {
     const filteredList = list.filter((el) => (el.id !== id));
     setList(filteredList);
@@ -92,56 +92,52 @@ export default function TranslationListSection({ className }) {
       </div>
       <div className="row">
         <div className="row  offset--cm--w">
-          <button className="download" href="download" onClick={()=>{downloadJSON()}}>download</button>
+          <button className="download" href="download" onClick={() => { downloadJSON() }}>download</button>
         </div>
         <div className="row offset--cm--w">
           <label className="upload">
-            <input type="file" accept=".json" onLoad={(el)=>{console.log(el);}} onChange={handleFileChange} className="upload__input" />
+            <input type="file" accept=".json" onLoad={(el) => { console.log(el); }} onChange={handleFileChange} className="upload__input" />
             <p className="upload__text">uplopad</p>
           </label>
         </div>
-        
+
       </div>
-      <div className="cell wrap">
-        <div className="offset--cm cell">
-          <div className="cell">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>En</th>
-                  <th>Ua</th>
-                  <th className="table__item--btn">
-                    <img src={Settings} alt={'settings'} />
-                  </th>
-                </tr>
-              </thead>
-              <tbody> 
-                {list && list.map(el => (
-                  <TranslationListItem
-                    key={el.id}
-                    onChange={element => {onChange(element, el.id)}}
-                    onBlur={() => {saveChange()}}
-                    onClickSet={() => {deleteItem(el.id)}}
-                    value={el}
-                    {...el}
-                  />
-                ))}
-                {newItem && 
-                  <TranslationListItem
-                    activeTabe={true}
-                    onChange={element => {changeNewItem(element)}}
-                    onBlur={() => {saveNewItem()}}
-                    value={newItem}
-                    {...newItem}
-                  />
-                }
-              </tbody>
-            </table>
-            {!newItem  && 
-              <Button className={`action action--hover-show ${!(list && list.length) && 'is-active'}`} onClick={() => {addItem()}}>Add new</Button>
+      <div className="cell offset--cm offset--m-none">
+        <table className="table table--list">
+          <thead>
+            <tr>
+              <th>En</th>
+              <th>Ua</th>
+              <th className="table__item--btn">
+                <img src={Settings} alt={'settings'} />
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {list && list.map(el => (
+              <TranslationListItem
+                key={el.id}
+                onChange={element => { onChange(element, el.id) }}
+                onBlur={() => { saveChange() }}
+                onClickSet={() => { deleteItem(el.id) }}
+                value={el}
+                {...el}
+              />
+            ))}
+            {newItem &&
+              <TranslationListItem
+                activeTabe={true}
+                onChange={element => { changeNewItem(element) }}
+                onBlur={() => { saveNewItem() }}
+                value={newItem}
+                {...newItem}
+              />
             }
-          </div>
-        </div>
+          </tbody>
+        </table>
+        {!newItem &&
+          <Button className={`action action--hover-show ${!(list && list.length) && 'is-active' || ''}`} onClick={() => { addItem() }}>Add new</Button>
+        }
       </div>
     </div>
   );

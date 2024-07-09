@@ -41,6 +41,9 @@ $tabsBorderColor: #555555;
 }
 
 .tab-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
 
   padding-top: 0;
   border: 1px solid $tabsBorderColor;

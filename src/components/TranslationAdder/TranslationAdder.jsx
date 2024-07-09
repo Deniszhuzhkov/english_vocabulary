@@ -56,7 +56,7 @@ export default function TranslationAdder({className}) {
       </div>
 
       <div className="row offset--cm">
-        <Button onClick={addVocabulary}> Add word/sentence</Button>
+        <Button className={'action action--m-full'} onClick={addVocabulary}> Add word/sentence</Button>
       </div>
     </div>
   );

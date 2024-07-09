@@ -13,7 +13,7 @@ export default function TranslationListItem(props) {
     <tr onClick={props.onClick} className="table__row">
       <td
         onClick={()=>{setInputEn(true)}}
-        className="table__item"
+        className="table__item table__item--text"
       >
         {
           inputEn ? 
@@ -31,7 +31,7 @@ export default function TranslationListItem(props) {
         }
       </td>
       <td
-        className="table__item"
+        className="table__item table__item--text"
         onClick={()=>{setInputUa(true)}}
       >
         { inputUa ?

@@ -63,11 +63,32 @@
 
 
 @media screen and (max-width: 460px) {
-  header {
-    padding: 8px;
+  .header {
+    padding: 0;
+
+    &__section {
+      padding: 0 8px;
+    }
   }
-  main.main {
-    padding-left: 0;
-    padding-right: 0;
+  .main {
+    padding: 0;
+  }
+
+  .tabs {
+    padding: 0;
+
+    &__element { 
+      margin: -1px 0 0;
+    }
+  }
+
+  .tab-body { 
+    margin: -1px 0 0;
+  }
+
+  .action {
+    &--h--full {
+      padding: 20px;
+    }
   }
 }

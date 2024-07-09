@@ -5,7 +5,7 @@ import Settings from "../../assets/Settings.svg"
 import TranslationListItem from "../TranslationListItem/TranslationListItem";
 
 export default function TranslationListSection({ className }) {
-  const [list, setList] = useState(JSON.parse(localStorage.getItem('vocabularyList')));
+  const [list, setList] = useState(JSON.parse(localStorage.getItem('vocabularyList')) || []);
   const [newItem, setNewItem] = useState(null)
 
   const handleFileChange = (event) => {
@@ -116,7 +116,7 @@ export default function TranslationListSection({ className }) {
                 </tr>
               </thead>
               <tbody> 
-                {list.map(el => (
+                {list && list.map(el => (
                   <TranslationListItem
                     key={el.id}
                     onChange={element => {onChange(element, el.id)}}
@@ -138,14 +138,9 @@ export default function TranslationListSection({ className }) {
               </tbody>
             </table>
             {!newItem  && 
-              <Button className={`action action--hover-show ${!(list && list.length) && 'is-active'}`} onClick={() => {addItem()}}>+</Button>
+              <Button className={`action action--hover-show ${!(list && list.length) && 'is-active'}`} onClick={() => {addItem()}}>Add new</Button>
             }
           </div>
-          {
-            !(list && list.length) &&
-              <p className="offset--cm"> Empty List</p>
-          }
-          
         </div>
       </div>
     </div>

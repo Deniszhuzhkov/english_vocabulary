@@ -76,7 +76,7 @@ export default function RandomWordSection({ className }) {
           </div>
 
           <div className="row offset--cm">
-            <Button onClick={sendanswer}> Send answer</Button>
+            <Button className={'m--full'} onClick={sendanswer}> Send answer</Button>
           </div>
           {
             history &&

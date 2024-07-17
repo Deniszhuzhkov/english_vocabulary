@@ -91,10 +91,10 @@ export default function TranslationListSection({ className }) {
         </h2>
       </div>
       <div className="row">
-        <div className="row  offset--cm--w">
+        <div className="cell m--full offset--cm--w">
           <button className="download" href="download" onClick={() => { downloadJSON() }}>download</button>
         </div>
-        <div className="row offset--cm--w">
+        <div className="cell m--full offset--cm--w">
           <label className="upload">
             <input type="file" accept=".json" onLoad={(el) => { console.log(el); }} onChange={handleFileChange} className="upload__input" />
             <p className="upload__text">uplopad</p>

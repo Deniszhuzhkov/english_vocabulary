@@ -9,6 +9,11 @@
 @import 'components/Tabs/tabs';
 @import 'components/TranslationListSection/translationListSection';
 
+
+body {
+  background-color: red;
+}
+
 .bg {
   position: absolute;
   width: 100%;
